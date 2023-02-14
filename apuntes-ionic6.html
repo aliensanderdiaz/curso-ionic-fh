@@ -1,0 +1,899 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <title>Curso Ionic 6</title>
+</head>
+
+<body>
+    <header class="text-center">
+        <h1>Curso Ionic 6</h1>
+    </header>
+    <main class="container">
+        <hr>
+
+        <section class="row">
+            <article class="col">
+                <h2>Sección 4 de 289 - Instalaciones Necesarias</h2>
+                <ul>
+                    <li>Google Chrome</li>
+                    <li>Visual Studio Code</li>
+                    <li>Postman</li>
+                    <li>Mongo Compass</li>
+                    <li>Git</li>
+                    <pre class="prettyprint">
+                        git config --global user.name "Tu nombre"
+                        git config --global user.email "Tu correo"
+                    </pre>
+                    <li>Node</li>
+                    <li>Android Studio</li>
+                    <li>XCode - Sólo para usuarios de OSX</li>
+                    <li>AngularCLI</li>
+                    <li>ionic framework</li>
+                </ul>
+                <h3>Extensiones de VSCode</h3>
+                <ul>
+                    <li><a href="https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.activitusbar"
+                            target="_blank">Activitus Bar</a></li>
+                    <li><a href="https://marketplace.visualstudio.com/items?itemName=fivethree.vscode-ionic-snippets"
+                            target="_blank">ionic Snippets</a></li>
+                    <li><a href="https://marketplace.visualstudio.com/items?itemName=pmneo.tsimporter"
+                            target="_blank">TypeScript Importer</a></li>
+                </ul>
+            </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 10 de 289 - Nuestra primera aplicacion de ionic</h2>
+            <pre class="prettyprint">
+                    
+                > ionic start my-app tabs
+                > ionic serve
+                > ionic serve --lab // CASI DEPRECADO
+                > npm i -D -E @ionic/lab // CASI DEPRECADO
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 14 de 289 - Depurar una aplicación de ionic - debugger</h2>
+            <pre class="prettyprint">
+                    
+                constructor() {
+                    this.numero = 11
+                    this.numero = 12
+                    this.numero = 13
+                    debugger
+                    this.numero = 11
+                }
+            </pre>
+            
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 19 de 289 Reforzamiento de angular</h2>
+            <pre class="prettyprint">
+                    
+                > ng new bases-angular
+                > ng serve -o
+                > ng g c pages/about --dry-run
+                > ng g c pages/about
+                > ng g c pages/contact
+                > ng g c pages/home
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 21 de 289 - Rutas en Angular</h2>
+            <pre class="prettyprint">
+                    
+                > ng g m appRouting --dry-run
+                > ng g m appRouting --flat --dry-run
+                > ng g m appRouting --flat
+            </pre>
+            <pre class="prettyprint">
+                    
+                import { NgModule } from '@angular/core';
+                import { Routes, RouterModule } from '@angular/router';
+                import { HomeComponent } from './pages/home/home.component';
+                import { AboutComponent } from './pages/about/about.component';
+                import { ContactComponent } from './pages/contact/contact.component';
+                
+                const routes: Routes = [
+                  {
+                    path: 'home',
+                    component: HomeComponent
+                  },
+                  {
+                    path: 'about',
+                    component: AboutComponent
+                  },
+                  {
+                    path: 'contact',
+                    component: ContactComponent
+                  },
+                  {
+                    path: '**',
+                    redirectTo: 'home'
+                  },
+                ]
+                
+                @NgModule({
+                  declarations: [],
+                  imports: [
+                    RouterModule.forRoot(routes)
+                  ],
+                  exports: [
+                    RouterModule
+                  ]
+                })
+                export class AppRoutingModule { }
+                
+            </pre>
+
+            <pre class="prettyprint">
+                    
+                // app.module.ts
+                imports: [
+                    BrowserModule,
+                    AppRoutingModule
+                ],
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 22 de 289 - routerlink y menucomponent</h2>
+            <pre class="prettyprint">
+                    
+                > ng g c components/menu
+            </pre>
+            <pre class="prettyprint">
+                    
+                routes = [
+                    {
+                        name: 'Home',
+                        path: '/home'
+                    },
+                    {
+                        name: 'About',
+                        path: '/about'
+                    },
+                    {
+                        name: 'Contact',
+                        path: '/contact'
+                    },
+                ]
+            </pre>
+            <pre class="prettyprint">
+                    
+                &ltul class="list-group">
+                    &lta *ngFor="let route of routes" [routerLink]="route.path" class="list-group-item">{{ route.name }}&lt/a>
+                &lt/ul>
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 23 de 289 - Módulo de paginas</h2>
+            <pre class="prettyprint">
+                    
+                > ng g m pages/pages --flat
+            </pre>
+            <pre class="prettyprint">
+                    
+                import { NgModule } from '@angular/core';
+                import { CommonModule } from '@angular/common';
+                import { HomeComponent } from './home/home.component';
+                import { AboutComponent } from './about/about.component';
+                import { ContactComponent } from './contact/contact.component';
+                
+                
+                
+                @NgModule({
+                  declarations: [
+                    HomeComponent,
+                    AboutComponent,
+                    ContactComponent
+                  ],
+                  imports: [
+                    CommonModule
+                  ],
+                  exports: [
+                    HomeComponent,
+                    AboutComponent,
+                    ContactComponent
+                  ]
+                })
+                export class PagesModule { }
+                
+            </pre>
+
+            <pre class="prettyprint">
+                    
+                import { NgModule } from '@angular/core';
+                import { BrowserModule } from '@angular/platform-browser';
+                import { AppRoutingModule } from './app-routing.module';
+                
+                import { AppComponent } from './app.component';
+                // import { AboutComponent } from './pages/about/about.component';
+                // import { ContactComponent } from './pages/contact/contact.component';
+                // import { HomeComponent } from './pages/home/home.component';
+                import { MenuComponent } from './components/menu/menu.component';
+                import { PagesModule } from './pages/pages.module';
+                
+                @NgModule({
+                  declarations: [
+                    AppComponent,
+                    // AboutComponent,
+                    // ContactComponent,
+                    // HomeComponent,
+                    MenuComponent
+                  ],
+                  imports: [
+                    BrowserModule,
+                    AppRoutingModule,
+                    PagesModule
+                  ],
+                  providers: [],
+                  bootstrap: [AppComponent]
+                })
+                export class AppModule { }
+                
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 24 de 289 - Lazyload de postscomponent</h2>
+            <pre class="prettyprint">
+                    
+                > ng g m pages/posts --routing --dry-run
+                > ng g m pages/posts --routing
+                > ng g c pages/posts --dry-run
+                > ng g c pages/posts
+            </pre>
+
+            <pre class="prettyprint">
+                    
+              import { NgModule } from '@angular/core';
+              import { RouterModule, Routes } from '@angular/router';
+              import { PostsComponent } from './posts.component';
+              
+              const routes: Routes = [
+                {
+                  path: '',
+                  component: PostsComponent
+                }
+              ];
+              
+              @NgModule({
+                imports: [RouterModule.forChild(routes)],
+                exports: [RouterModule]
+              })
+              export class PostsRoutingModule { }
+              
+            </pre>
+
+            <pre class="prettyprint">
+                // app-routing.module.ts
+                {
+                    path: 'posts',
+                    // loadChildren: './pages/posts/posts.module#PostsModule', // DEPRECATED
+                    loadChildren: () => import('./pages/posts/posts.module').then( m => m.PostsModule)
+                },
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 25 de 289 - Servicios y data externa</h2>
+            <pre class="prettyprint">
+                    
+              > ng g s services/data --spec=false // DEPRECATED
+              > ng g s services/data --skip-tests=true // DEPRECATED
+            </pre>
+            <pre class="prettyprint">
+              // app.module.ts
+              imports: [
+                BrowserModule,
+                AppRoutingModule,
+                PagesModule,
+                HttpClientModule
+              ],
+            </pre>
+
+            <pre class="prettyprint">
+                    
+              export class DataService {
+
+                constructor(
+                  private http: HttpClient
+                ) { }
+              
+                getPosts() {
+                  // return this.http.get('https://jsonplaceholder.typicode.com/posts')
+                  return this.http.get('https://jsonplaceholder.typicode.com/posts')
+                    .pipe(tap(console.log));
+                }
+              }
+            </pre>
+
+            <pre class="prettyprint">
+                    
+              ngOnInit(): void {
+                // this.dataService.getPosts().subscribe(data => {
+                //   this.mensajes = data
+                // })
+                this.mensajes = this.dataService.getPosts()
+              }
+            </pre>
+
+            <pre class="prettyprint">
+                    
+              &lt!-- &ltli *ngFor="let post of mensajes" class="list-group-item">
+                &lth2>{{ post.title }}&lt/h2>
+                &ltp>{{ post.body }}&lt/p>
+              &lt/li> -->
+              &ltli *ngFor="let post of mensajes | async" class="list-group-item">
+                &lth2>{{ post.title }}&lt/h2>
+                &ltp>{{ post.body }}&lt/p>
+              &lt/li>
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 27 de 289 - @Input</h2>
+            <pre class="prettyprint">
+                    
+              > ng g c pages/posts/post --skip-tests=true
+            </pre>
+            <pre class="prettyprint">
+                    
+              export class PostComponent {
+                @Input() post: any;
+              }
+            </pre>
+            <pre class="prettyprint">
+                    
+              &ltapp-post *ngFor="let post of mensajes | async" class="list-group-item" [post]="post">&lt/app-post>
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 28 de 289 - @Output</h2>
+            <pre class="prettyprint">
+                    
+              @Output() clickPost = new EventEmitter()
+
+              onClick() {
+                console.log(this.post.id)
+                this.clickPost.emit(this.post.id)
+              }
+            </pre>
+            <pre class="prettyprint">
+                    
+              &ltapp-post *ngFor="let post of mensajes | async" class="list-group-item" [post]="post" (clickPost)="escuchaClick($event)">&lt/app-post>
+            </pre>
+            <pre class="prettyprint">
+                    
+              escuchaClick(id: any) {
+                console.log({ id })
+              }
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 32 de 289 - Proyecto Componentes</h2>
+            <a href="https://github.com/Klerith/ionic-components-app" target="_blank" rel="noopener noreferrer">REPOSITORIO</a>
+            <pre class="prettyprint">
+                    
+              > ionic start componentes blank
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 33 de 289 - Cambiando la pantalla principal de la aplicacion</h2>
+            <p>Eliminamos la carpeta home, se genera un error</p>
+            <pre class="prettyprint">
+                    
+              > ionic g page pages/inicio --dry-run
+              > ionic g page pages/inicio
+            </pre>
+
+            <pre class="prettyprint">
+                    
+              const routes: Routes = [
+                // {
+                //   path: 'home',
+                //   loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+                // },
+                {
+                  path: '',
+                  redirectTo: 'inicio',
+                  pathMatch: 'full'
+                },
+                {
+                  path: 'inicio',
+                  loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
+                },
+              ];
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 34 de 289 - Navegación entre paginas</h2>
+            <pre class="prettyprint">
+                    
+              > ionic g page pages/alert --spec=false
+              > ionic g page pages/action-sheet --spec=false
+            </pre>
+
+            <pre class="prettyprint">
+                    
+              &ltion-button routerLink="/alert" expand="block">
+                Alert
+              &lt/ion-button>
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 35 de 289 - Back Button</h2>
+            <pre class="prettyprint">
+                    
+              &ltion-buttons slot="start">
+                &ltion-back-button defaultHref="/">&lt/ion-back-button>
+              &lt/ion-buttons>
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 36 de 289 - Header</h2>
+            <pre class="prettyprint">
+                    
+              > ionic g module components --dry-run
+              > ionic g module components
+              > ionic g component components/header --dry-run
+              > ionic g component components/header
+            </pre>
+
+            <pre class="prettyprint">
+                    
+              @NgModule({
+                declarations: [
+                  HeaderComponent
+                ],
+                imports: [
+                  CommonModule,
+                  IonicModule
+                ],
+                exports: [
+                  HeaderComponent
+                ]
+              })
+              export class ComponentsModule { }
+            </pre>
+            <pre class="prettyprint">
+                    
+              @NgModule({
+                imports: [
+                  CommonModule,
+                  FormsModule,
+                  IonicModule,
+                  AlertPageRoutingModule,
+                  ComponentsModule
+                ],
+                declarations: [AlertPage]
+              })
+              export class AlertPageModule {}
+            </pre>
+            <pre class="prettyprint">
+                    
+              export class HeaderComponent implements OnInit {
+
+                @Input() title = ''
+              
+                constructor() { }
+              
+                ngOnInit() {}
+              
+              }
+            </pre>
+            <pre class="prettyprint">
+                    
+              &ltion-header>
+                &ltion-toolbar>
+                  &ltion-buttons slot="start">
+                    &ltion-back-button defaultHref="/">&lt/ion-back-button>
+                  &lt/ion-buttons>
+                  &ltion-title>{{ title }}&lt/ion-title>
+                &lt/ion-toolbar>
+              &lt/ion-header>
+              
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 37 de 289 - ion list</h2>
+            <pre class="prettyprint">
+                    
+              &ltion-list>
+                &ltion-item *ngFor="let componente of componentes" [routerLink]="componente.redirectTo">
+                  &ltion-label>
+                    &ltion-icon slot="start" [name]="componente.icon">&lt/ion-icon>
+                    {{ componente.name }}
+                  &lt/ion-label>
+                &lt/ion-item>
+              &lt/ion-list>
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 43 de 289 - ion-action-sheet</h2>
+            
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 44 de 289 - ion-alert</h2>
+            
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 45 de 289 - ion-avatar</h2>
+            <pre class="prettyprint">
+                    
+              > ionic g page pages/avatar --spec=false
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 46 de 289 - ion-button</h2>
+            <pre class="prettyprint">
+                    
+              > ionic g page pages/button --spec=false
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 47 de 289 - ion-card</h2>
+            <pre class="prettyprint">
+                    
+              > ionic g page pages/card --spec=false
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 48 de 289 - ion-checkbox</h2>
+            <pre class="prettyprint">
+                    
+              > ionic g page pages/check --spec=false
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 49 de 289 - ion-date-time</h2>
+            <pre class="prettyprint">
+                    
+              > ionic g page pages/date-time --spec=false
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 51 de 289 - ion-fab</h2>
+            <pre class="prettyprint">
+                    
+              > ionic g page pages/fab --spec=false
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 52 de 289 - Crear Variables de Color</h2>
+            
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 53 de 289 - Grid</h2>
+            <pre class="prettyprint">
+                    
+              > ionic g page pages/grid --spec=false
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 55 de 289 - ion-infinite-scroll</h2>
+            <pre class="prettyprint">
+                    
+              > ionic g page pages/infinite --spec=false
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 56 de 289 - ion-input</h2>
+            <pre class="prettyprint">
+                    
+              > ionic g page pages/input --spec=false
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 58 de 289 - ion-list</h2>
+            <pre class="prettyprint">
+                    
+              > ionic g service services/data
+              > ionic g page pages/list --spec=false
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 60 de 289 - ion-list-reorder</h2>
+            <pre class="prettyprint">
+                    
+              > ionic g page pages/list-reorder --spec=false
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 62 de 289 - ion-loading</h2>
+            <pre class="prettyprint">
+                    
+              > ionic g page pages/loading --spec=false
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 66 de 289 - ion-modal</h2>
+            <pre class="prettyprint">
+                    
+              > ionic g page pages/modal --spec=false
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 68 de 289 - ion-popover</h2>
+            <pre class="prettyprint">
+                    
+              > ionic g page pages/popover --spec=false
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 105 de 289 - Aplicación Noticias</h2>
+            <pre class="prettyprint">
+                    
+              > ionic start noticias tabs
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 106 de 289 - Servicio APi </h2>
+            <pre class="prettyprint">
+                    
+              > ionic g s services/news
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 107 de 289 - quicktype</h2>
+            <p>
+              <a href="https://quicktype.io/" target="_blank" rel="noopener noreferrer">https://quicktype.io/</a>
+              <br>
+              O extensión "Paste JSON as Code" de quicktype
+              <br>
+              Para usar CTRL + SHIFT + P
+              <br>
+              "Paste JSON as Code" + ENTER
+              <br>
+              o CTRL + SHIFT + V
+            </p>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 109 de 289 - Componentes</h2>
+            <pre class="prettyprint">
+                    
+              > ionic g m components
+              > ionic g c components/articles --spec=false
+              > ionic g c components/article --spec=false
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 238 de 289 - Fotosgram APP en Ionic</h2>
+            <pre class="prettyprint">
+                    
+              > ionic start fotosgram tabs
+              > ionic g page pages/home
+              > ionic g service services/posts
+              > ionic g m components
+              > ionic g c components/posts
+              > ionic g c components/post
+              > ionic g m pipes
+              > ionic g p pipes/domSanitizer
+              > ionic g service services/usuario
+              > npm install @ionic/storage-angular
+              > ionic g service services/UiService
+              > ionic g c components/avatarSelector
+              > ionic g guard guards/usuario
+              
+              > npm install @capacitor/geolocation
+              > npx cap sync
+              
+              > ionic g c components/mapa
+              
+              > npm install @capacitor/camera
+              > npx cap sync
+
+              > ionic g p pipes/imagen
+            </pre>
+          </article>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

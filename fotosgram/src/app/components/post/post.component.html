@@ -1,0 +1,55 @@
+<div class="post">
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <ion-img src="/assets/avatars/{{ post.usuario?.avatar }}"></ion-img>
+    </ion-avatar>
+    <ion-label>
+      <h3>{{ post.usuario?.nombre }}</h3>
+      <h5>{{ post.usuario?.email }}</h5>
+    </ion-label>
+  </ion-item>
+
+  <!-- <ion-slides>
+    <ion-slide class="image-slide" [style]="img1 | domSanitizer">
+    </ion-slide>
+    <ion-slide class="image-slide" [style]="img2 | domSanitizer">
+    </ion-slide>
+    <ion-slide class="image-slide" [style]="img3 | domSanitizer">
+    </ion-slide>
+  </ion-slides> -->
+
+    <!-- ngIf imgs.... -->
+    <ion-slides pager="true" *ngIf="post.imgs && post.imgs.length > 1">
+
+      <ion-slide *ngFor="let img of post.imgs"
+                 class="image-slide"
+                 [style]=" (img | imagen: '63cb28511b9f028181c9cbb1' ) | domSanitizer ">
+      </ion-slide>
+
+    </ion-slides>
+
+    <ion-slides *ngIf="post.imgs && post.imgs.length === 1" [options]="slideSoloOpts">
+
+      <ion-slide class="image-slide"
+                 [style]=" (post.imgs[0] | imagen: '63cb28511b9f028181c9cbb1' ) | domSanitizer ">
+      </ion-slide>
+
+    </ion-slides>
+
+  <!-- <app-mapa [coords]="post.coords"></app-mapa> -->
+
+  <ion-item lines="none">
+    <ion-button slot="start">
+      <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
+    </ion-button>
+    <ion-button slot="end">
+      <ion-icon slot="icon-only" name="bookmark"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label class="ion-text-wrap">
+      {{ post.mensaje }}
+    </ion-label>
+  </ion-item>
+</div>
